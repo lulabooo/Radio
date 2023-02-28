@@ -15,11 +15,7 @@ public class Radio {
     }
 
     public void setCurrentStation (int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            return;}
-        if (newCurrentStation > 9) {
-                return;
-            }
+
         currentStation = newCurrentStation;
     }
 
@@ -36,29 +32,10 @@ public class Radio {
         }else {
             setCurrentStation(currentStation - 1);
         }
-    }
 
-
-    public void increaseVolume() {
-        if (currentStation < 10) {
-            currentVolume = currentVolume - 1;
-        }
-    }
-
-    public void downStation() {
-        if (currentStation <= minStationNumber) {
-            setCurrentStation(maxStationNumber);
-        } else {
-            currentStation = currentStation - 1;
-        }
     }
     // ГРОМКОСТЬ
     public void setCurrentVolume (int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
-            return;}
-        if (newCurrentVolume > 10) {
-            return;
-        }
         currentVolume = newCurrentVolume;
     }
     public int getCurrentVolume() {
