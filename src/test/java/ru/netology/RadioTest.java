@@ -1,52 +1,49 @@
 package ru.netology;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    // Переключается после 9 на 0
+
+    Radio radio = new Radio();
+
     @Test
-    public void shouldNextNumberStationAfter9() {
+    public void newSetters (){
+        Radio radio = new Radio(46);
+        Assertions.assertEquals(46, radio.getQuantityStation());
+        Assertions.assertEquals(45,radio.getMaxStationNumber());
+    }
+
+    @Test // Переключается после max на 0
+    public void shouldNextNumberStationAfterMax() {
         {
-            Radio radio = new Radio();
             radio.setCurrentStation(9);
             radio.nextStation();
-
             int expected = 0;
             int actual = radio.getCurrentStation();
-
             Assertions.assertEquals(expected, actual);
         }
     }
 
-    // Переключение каналов +1
-    @Test
+    @Test  //Переключение каналов +1
     public void shouldNextNumberStation() {
         {
-            Radio radio = new Radio();
-            radio.setCurrentStation(3);
+            radio.setCurrentStation(6);
             radio.nextStation();
-
-            int expected = 4;
+            int expected = 7;
             int actual = radio.getCurrentStation();
-
             Assertions.assertEquals(expected, actual);
         }
     }
 
-    // Переключается после 9 на 0
-    @Test
+    @Test //Переключение с 0 на max
     public void shouldPreviosNumberStationBefor0() {
         {
-            Radio radio = new Radio();
             radio.setCurrentStation(0);
             radio.prevStation();
-
             int expected = 9;
             int actual = radio.getCurrentStation();
-
             Assertions.assertEquals(expected, actual);
         }
     }
@@ -55,13 +52,10 @@ class RadioTest {
     @Test
     public void shouldBeforNumberStation() {
         {
-            Radio radio = new Radio();
             radio.setCurrentStation(5);
             radio.prevStation();
-
             int expected = 4;
             int actual = radio.getCurrentStation();
-
             Assertions.assertEquals(expected, actual);
         }
     }
@@ -69,29 +63,25 @@ class RadioTest {
     // Номер станции
     @Test
     public void shouldSetStation() {
-        Radio radio = new Radio();
-
-        radio.setCurrentStation(5);
-
-        int expected = 5;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        {
+            radio.setCurrentStation(5);
+            int expected = 5;
+            int actual = radio.getCurrentStation();
+            Assertions.assertEquals(expected, actual);
+        }
 
     }
+
+
 
     // Громкость с 10 остается 10
     @Test
     public void shouldStopVolumeAfter10() {
         {
-            Radio radio = new Radio();
-
-            radio.setCurrentVolume(10);
+            radio.setCurrentVolume(100);
             radio.upVolume();
-
-            int expected = 10;
+            int expected = 100;
             int actual = radio.getCurrentVolume();
-
             Assertions.assertEquals(expected, actual);
         }
     }
@@ -101,10 +91,10 @@ class RadioTest {
     public void shouldUpVolume() {
         {
             Radio radio = new Radio();
-            radio.setCurrentVolume(6);
+            radio.setCurrentVolume(25);
             radio.upVolume();
 
-            int expected = 7;
+            int expected = 26;
             int actual = radio.getCurrentVolume();
 
             Assertions.assertEquals(expected, actual);
@@ -132,10 +122,10 @@ class RadioTest {
     public void shouldDownVolume() {
         {
             Radio radio = new Radio();
-            radio.setCurrentVolume(6);
+            radio.setCurrentVolume(48);
             radio.downVolume();
 
-            int expected = 5;
+            int expected = 47;
             int actual = radio.getCurrentVolume();
 
             Assertions.assertEquals(expected, actual);
