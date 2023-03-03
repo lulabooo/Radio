@@ -14,43 +14,49 @@ public class Radio {
         return currentStation;
     }
 
-    public void setCurrentStation (int newCurrentStation) {
-
+    public void setCurrentStation(int newCurrentStation) {
         currentStation = newCurrentStation;
     }
 
-    public void nextStation (int currentStation) {
+    public void nextStation() {
         if (currentStation >= maxStationNumber) {
             setCurrentStation(minStationNumber);
         } else {
-            setCurrentStation(currentStation + 1);
+            currentStation = currentStation + 1;
         }
     }
-    public void prevStation (int currentStation) {
+
+    public void prevStation() {
         if (currentStation <= minStationNumber) {
             setCurrentStation(maxStationNumber);
-        }else {
-            setCurrentStation(currentStation - 1);
+        } else {
+            currentStation = currentStation - 1;
         }
 
     }
+
     // ГРОМКОСТЬ
-    public void setCurrentVolume (int newCurrentVolume) {
+    public void setCurrentVolume(int newCurrentVolume) {
         currentVolume = newCurrentVolume;
     }
+
     public int getCurrentVolume() {
         return currentVolume;
     }
-    public void upVolume (int currentVolume) {
+
+    public void upVolume() {
         if (currentVolume >= maxVolume) {
             setCurrentVolume(maxVolume);
         } else {
-            setCurrentVolume(currentVolume + 1);
+            currentVolume = currentVolume + 1;
         }
     }
-    public void downVolume (int currentVolume) {
+
+    public void downVolume() {
         if (currentVolume <= minVolume) {
             setCurrentVolume(minVolume);
-        } else setCurrentVolume(currentVolume - 1);
+        } else {
+            currentVolume = currentVolume - 1;
+        }
     }
 }
